@@ -1,10 +1,12 @@
 {
     "DEBUG": true,
     "TESTING": true,
-    "DEBUG_LOG_FILE": "swc-debug.log",                                  // Debug log file path
-    "ERROR_LOG_FILE" :"swc-error.log",                                  // Error log file path
-    "LOG_FILE_SIZE" : 100000,                                                   // Log file size in bytes
-    "LOG_FILE_COUNT":10,                                                        // Max log files to keep in rotation cycle
-    "LOG_MSG_FORMAT": "%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]"
+    "DEBUG_LOG_FILE": "swc-debug.log",
+    "ERROR_LOG_FILE" :"swc-error.log",
+    "LOG_FILE_SIZE" : 100000,
+    "LOG_FILE_COUNT":10,
+    "LOG_MSG_FORMAT": "%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]",
+    "SQLALCHEMY_DATABASE_URI": "postgresql+psycopg2://postgres:root@localhost/tourism",
+    "SQLALCHEMY_TRACK_MODIFICATIONS": false
 
 }

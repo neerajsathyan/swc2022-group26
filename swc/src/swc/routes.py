@@ -16,7 +16,7 @@ def init_route(app, api):
     :rtype: None
     """
     # api key resource routing
-    api.add_resource(ModelHandler, '/api/swc')
+    api.add_resource(ModelHandler, '/api')
 
     # Web routes registration
     app.register_blueprint(web_routes)
