@@ -43,12 +43,14 @@ dataclasses-json==0.5.6`
 - Example Responses:
   - ```json
     {
-    "uuid": "d1362e11-175d-4f10-b0be-4778d84431d5",
-    "places": {
-        "id": 3,
-        "name": "Jordaan Neighborhood",
-        "description": "Jordaan is the most popular of Amsterdam's neighborhoods and is well-known for its mix of residential areas with garden courtyards, lively markets, and upscale boutiques and eateries. The area is also home to plenty of fun things to do, from taking a pleasant stroll along the many picturesque streets to spending time visiting the many top-rated tourist attractions located here.\n\nAlthough best known as the location of Anne Frank House, the area is also home to lesser-known treasures like the Woonboots Museum, a floating museum dedicated to houseboats, and the interesting (honestly!) Amsterdam Cheese Museum."
+      "uuid": "a9c9a4ec-0554-42c5-9c66-91b772047b96",
+      "places": [
+        {
+          "id": 1,
+          "name": "Rijks Museum",
+          "description": "The Rijksmuseum is a Dutch national museum dedicated to arts and history in Amsterdam. The museum is located at the Museum Square in the borough Amsterdam South, close to the Van Gogh Museum, the Stedelijk Museum Amsterdam, and the Concertgebouw."
         }
+      ]
     }
     ```
   - ```json

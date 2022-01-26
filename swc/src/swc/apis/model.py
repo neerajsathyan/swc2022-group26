@@ -29,7 +29,7 @@ class ModelHandler(BaseListHandler):
             if place is None:
                 return self.response_error(400, "ID not found!")
             else:
-                return self.response_200({'uuid': str(uuid.uuid4()), 'places': json.loads(place.to_json())})
+                return self.response_200({'uuid': str(uuid.uuid4()), 'places': [json.loads(place.to_json())]})
 
     def post(self):
         status, data = self.get_data()
@@ -58,4 +58,4 @@ class ModelHandler(BaseListHandler):
             if place is None:
                 return self.response_error(400, "ID not found!")
             else:
-                return self.response_200({'uuid': str(uuid.uuid4()), 'places': json.loads(place.to_json())})
+                return self.response_200({'uuid': str(uuid.uuid4()), 'places': [json.loads(place.to_json())]})
