@@ -9,6 +9,11 @@ Software Cointainerization Project
 - Thats all folks :)
 
 ## Frontend
+- Install npm (NodeJS)
+- Install vue-cli using npm:
+```
+npm install -g @vue/cli
+```
 - Change your terminal directory to `swc/frontend`
 - Run the local network using command:
 ```
