@@ -6,7 +6,7 @@ import * as Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
-// createApp(App).mount('#app')
+const app = Vue.createApp(App)
 
-const app = Vue.createApp(App).mount('#app')
+app.mount('#app')
 app.use(VueAxios, axios)

@@ -7,6 +7,8 @@ from flasgger import Swagger
 from flask_restful import Api
 from apis.psql_models import db
 
+from flask_cors import CORS
+
 from routes import init_route
 import json
 from utils.app_setup import load_conf
@@ -15,6 +17,7 @@ from utils.app_setup import setup_logging
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 # Initialize the app
 app = Flask(__name__, static_url_path='/static')
+CORS(app)
 swagger = Swagger(app)
 
 SECRET_KEY = "1ULFNxP+a3&[cN[8^7Kh1"

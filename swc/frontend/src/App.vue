@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-6 h-screen bg-gray-100">
+  <div class="grid grid-cols-6 h-full pb-10 bg-gray-100">
     <div class="col-start-2 col-span-4">
     <div class="w-full text-center p-1 text-gray-800">SWC course project</div>
     <div class="w-full text-center text-2xl p-1 text-red-900 mb-2">Amsterdam touristic sights</div>
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 
 export default {
   name: 'App',
@@ -32,20 +33,28 @@ export default {
       for (let i = 0; i < 9; i++) 
         this.places.push(place)
     },
-    fetchPlaces() {
-      this.axios.get('http://localhost:8000/api').then((response) => {
+    async fetchPlaces() {
+      await axios.get('http://localhost:8000/api').then((response) => {
         if (response.data) {
           this.places = response.data.places
         }
       })
+      // fetch('http://localhost:8000/api', {
+      //   method: "GET",
+      //   headers: {
+      //     "Content-type" : "application/json"
+      //   }
+      // })
+      //   .then(response => response.json())
+      //   .then(data => console.log(data));
     }
   },
   mounted() {
     // uncomment for using api
-    // this.fetchPlaces()
+    this.fetchPlaces()
 
     // comment when using api
-    this.fetchDummy()
+    // this.fetchDummy()
   },
 }
 </script>

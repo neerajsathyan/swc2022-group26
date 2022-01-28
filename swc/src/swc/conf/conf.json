@@ -6,7 +6,7 @@
     "LOG_FILE_SIZE" : 100000,
     "LOG_FILE_COUNT":10,
     "LOG_MSG_FORMAT": "%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]",
-    "SQLALCHEMY_DATABASE_URI": "postgresql+psycopg2://postgres:root@localhost/tourism",
+    "SQLALCHEMY_DATABASE_URI": "postgresql+psycopg2://yhcuiupyppjcov:a68c393127a1e65e329f9f68ad7906f3b8194f62892ec3480a3cbdad96dde681@ec2-52-19-164-214.eu-west-1.compute.amazonaws.com/dc7ef3e85gcitk",
     "SQLALCHEMY_TRACK_MODIFICATIONS": false
 
 }
