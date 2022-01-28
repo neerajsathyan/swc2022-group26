@@ -1,26 +1,51 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="grid grid-cols-6 h-screen bg-gray-100">
+    <div class="col-start-2 col-span-4">
+    <div class="w-full text-center p-1 text-gray-800">SWC course project</div>
+    <div class="w-full text-center text-2xl p-1 text-red-900 mb-2">Amsterdam touristic sights</div>
+    <div class="grid grid-cols-3 gap-3">
+      <div v-for="(place, index) in places" :key="index" class="p-2 text-center bg-white shadow-md rounded-md hover:bg-blue-100 cursor-default">
+        <div class="text-lg">{{ place.name }}</div>
+        <div>{{ place.description }}</div>
+      </div>
+    </div>
+  </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  data() {
+    return {
+      places: []
+    }
+  },
+  methods: {
+    fetchDummy() {
+      let place = {
+        name: "Rijks Museum",
+        description: "The Rijksmuseum is a Dutch national museum dedicated to arts and history in Amsterdam. The museum is located at the Museum Square in the borough Amsterdam South, close to the Van Gogh Museum, the Stedelijk Museum Amsterdam, and the Concertgebouw."
+      }
+
+      for (let i = 0; i < 9; i++) 
+        this.places.push(place)
+    },
+    fetchPlaces() {
+      this.axios.get('http://localhost:8000/api').then((response) => {
+        if (response.data) {
+          this.places = response.data.places
+        }
+      })
+    }
+  },
+  mounted() {
+    // uncomment for using api
+    // this.fetchPlaces()
+
+    // comment when using api
+    this.fetchDummy()
+  },
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
