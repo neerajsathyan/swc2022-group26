@@ -24,37 +24,16 @@ export default {
     }
   },
   methods: {
-    fetchDummy() {
-      let place = {
-        name: "Rijks Museum",
-        description: "The Rijksmuseum is a Dutch national museum dedicated to arts and history in Amsterdam. The museum is located at the Museum Square in the borough Amsterdam South, close to the Van Gogh Museum, the Stedelijk Museum Amsterdam, and the Concertgebouw."
-      }
-
-      for (let i = 0; i < 9; i++) 
-        this.places.push(place)
-    },
     async fetchPlaces() {
       await axios.get('http://localhost:8000/api').then((response) => {
         if (response.data) {
           this.places = response.data.places
         }
       })
-      // fetch('http://localhost:8000/api', {
-      //   method: "GET",
-      //   headers: {
-      //     "Content-type" : "application/json"
-      //   }
-      // })
-      //   .then(response => response.json())
-      //   .then(data => console.log(data));
     }
   },
   mounted() {
-    // uncomment for using api
     this.fetchPlaces()
-
-    // comment when using api
-    // this.fetchDummy()
   },
 }
 </script>
