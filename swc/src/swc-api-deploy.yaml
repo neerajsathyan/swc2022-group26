@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: swc-api-deployment
-  namespace: swc-api
+  namespace: swc-app
   labels:
     app: swc-api
 spec:
