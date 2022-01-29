@@ -4,5 +4,5 @@ from swc import app
 
 if __name__ == '__main__':
     print('Starting app.run')
-    app.run(host='127.0.0.1', port=8000, use_reloader=True, threaded=True, debug=True)
+    app.run(host='0.0.0.0', port=8000, use_reloader=True, threaded=True, debug=True)
     print('Stopped app.run')

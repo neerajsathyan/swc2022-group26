@@ -5,12 +5,13 @@ import traceback
 from flask import Flask
 from flasgger import Swagger
 from flask_restful import Api
+from flask_cors import CORS
+
 from apis.psql_models import db
 
 from flask_cors import CORS
 
 from routes import init_route
-import json
 from utils.app_setup import load_conf
 from utils.app_setup import setup_logging
 
@@ -33,21 +34,17 @@ def init_app(app):
     try:
         # Load settings
         # load_conf(app)
-        # setup_logging(app)
+        setup_logging(app)
         init_db(app)
+        CORS(app)
         init_route(app, api)
         app.logger.info('SWC application initialized.')
     except:
         app.logger.error(traceback.format_exc())
 
 
-# TODO Add DB Configuration here..
 def init_db(app):
     try:
-        # app.modelgpt2 = GPT2Model()
-        # app.modelgpt2 = torch.load('models/model_gpt2.pt', map_location=torch.device('cpu'))
-        # app.modelgpt2tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
-        # print("GPT2 Model Loaded..")
         db.init_app(app)
 
     except:

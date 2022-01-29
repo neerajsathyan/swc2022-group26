@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: swc-api-deployment
+  namespace: swc-api
+  labels:
+    app: swc-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: swc-api
+  template:
+    metadata:
+      labels:
+        app: swc-api
+    spec:
+      containers:
+      - name: swc-api-container
+        image: neerajs1995/swc-api:0.1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "250m"
+        ports:
+        - containerPort: 8000
