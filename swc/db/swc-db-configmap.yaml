@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: swc-db-configmap
+  namespace: swc-app
+  labels:
+    app: swc-db
+data:
+  POSTGRES_HOST: swc-db-service
+  POSTGRES_PORT: "5432"
+  POSTGRES_USER: postgres
+  POSTGRES_DB: tourism
+
