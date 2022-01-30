@@ -10,7 +10,9 @@ metadata:
     nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
 spec:
   tls:
-  - secretName: swc-secret-tls
+  - hosts:
+    - api.swc26.com
+    secretName: swc-secret-tls
   rules:
   - host: api.swc26.com
     http:
