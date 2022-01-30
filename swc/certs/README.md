@@ -28,3 +28,4 @@
   ```
 - The application required secret-tls yaml file is given here.
 - Also for more reference: https://cloud.google.com/kubernetes-engine/docs/how-to/ingress-multi-ssl
+- After that run the ingress service for the api or front-end to enable access points.
