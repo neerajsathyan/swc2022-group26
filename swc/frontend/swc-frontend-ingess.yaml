@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: swc-frontend-deployment
+  namespace: swc-app
+  labels:
+    app: swc-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: swc-frontend
+  template:
+    metadata:
+      labels:
+        app: swc-frontend
+    spec:
+      containers:
+      - name: swc-frontend-container
+        image: neerajs1995/swc-frontend
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "250m"
+        ports:
+        - containerPort: 8080

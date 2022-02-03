@@ -1,0 +1,7 @@
+version: '3.3'
+services:
+  swc-api:
+    image: neerajs1995/swc-frontend
+    build: .
+    ports:
+      - "8080:8080"
