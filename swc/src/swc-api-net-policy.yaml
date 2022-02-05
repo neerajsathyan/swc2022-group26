@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: swc-api-net-policy
+  namespace: swc-app
+spec:
+  podSelector:
+    matchLabels:
+      role: api
+  policyTypes:
+  - Ingress
+   - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          project: swc-app
+    - podSelector:
+        matchLabels:
+          role: db
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          project: swc-app
+    - podSelector:
+        matchLabels:
+          role: frontend
