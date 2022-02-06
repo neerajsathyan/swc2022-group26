@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: swc-frontend-container
-        image: neerajs1995/swc-frontend
+        image: asror98/swc-frontend:0.1
         resources:
           limits:
             memory: "128Mi"
