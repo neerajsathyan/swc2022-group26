@@ -5,14 +5,12 @@ import traceback
 from flask import Flask
 from flasgger import Swagger
 from flask_restful import Api
-from flask_cors import CORS
 
 from apis.psql_models import db
 
 from flask_cors import CORS
 
 from routes import init_route
-from utils.app_setup import load_conf
 from utils.app_setup import setup_logging
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
@@ -45,6 +43,12 @@ def init_app(app):
 
 def init_db(app):
     try:
+        host = os.getenv('POSTGRES_HOST')
+        port = os.getenv('POSTGRES_PORT')
+        username = os.getenv('POSTGRES_USER')
+        dbname = os.getenv('POSTGRES_DB')
+        password = os.getenv('POSTGRES_PASSWORD')
+        app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql+psycopg2://{username}:{password}@{host}:{port}/{dbname}"
         db.init_app(app)
 
     except:

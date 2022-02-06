@@ -1,7 +1,0 @@
-FROM postgres:13-alpine
-
-ENV POSTGRES_USERNAME=postgres \
-    POSTGRES_PASSWORD=root
-    
-EXPOSE 5432/TCP
-

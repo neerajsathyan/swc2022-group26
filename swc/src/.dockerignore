@@ -3,3 +3,4 @@ node_modules
 .gitignore
 .pyc
 __pycache__
+.log

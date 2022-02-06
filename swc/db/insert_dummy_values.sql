@@ -46,7 +46,7 @@ SET default_table_access_method = heap;
 -- Name: place_table; Type: TABLE; Schema: places; Owner: postgres
 --
 
-CREATE TABLE places.place_table (
+CREATE TABLE place_table (
     id integer NOT NULL,
     name text,
     description text,
@@ -54,20 +54,20 @@ CREATE TABLE places.place_table (
 );
 
 
-ALTER TABLE places.place_table OWNER TO postgres;
+ALTER TABLE place_table OWNER TO postgres;
 
 --
 -- Name: TABLE place_table; Type: COMMENT; Schema: places; Owner: postgres
 --
 
-COMMENT ON TABLE places.place_table IS 'This table describes all the amsterdam places off interests';
+COMMENT ON TABLE place_table IS 'This table describes all the amsterdam places off interests';
 
 
 --
 -- Name: place_table_id_seq; Type: SEQUENCE; Schema: places; Owner: postgres
 --
 
-CREATE SEQUENCE places.place_table_id_seq
+CREATE SEQUENCE place_table_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -76,27 +76,27 @@ CREATE SEQUENCE places.place_table_id_seq
     CACHE 1;
 
 
-ALTER TABLE places.place_table_id_seq OWNER TO postgres;
+ALTER TABLE place_table_id_seq OWNER TO postgres;
 
 --
 -- Name: place_table_id_seq; Type: SEQUENCE OWNED BY; Schema: places; Owner: postgres
 --
 
-ALTER SEQUENCE places.place_table_id_seq OWNED BY places.place_table.id;
+ALTER SEQUENCE place_table_id_seq OWNED BY place_table.id;
 
 
 --
 -- Name: place_table id; Type: DEFAULT; Schema: places; Owner: postgres
 --
 
-ALTER TABLE ONLY places.place_table ALTER COLUMN id SET DEFAULT nextval('places.place_table_id_seq'::regclass);
+ALTER TABLE ONLY place_table ALTER COLUMN id SET DEFAULT nextval('place_table_id_seq'::regclass);
 
 
 --
 -- Data for Name: place_table; Type: TABLE DATA; Schema: places; Owner: postgres
 --
 
-COPY places.place_table (id, name, description, thumbnail_url) FROM stdin;
+COPY place_table (id, name, description, thumbnail_url) FROM stdin;
 1	Rijks Museum	The Rijksmuseum is a Dutch national museum dedicated to arts and history in Amsterdam. The museum is located at the Museum Square in the borough Amsterdam South, close to the Van Gogh Museum, the Stedelijk Museum Amsterdam, and the Concertgebouw.	\N
 2	Van Gogh Museum	The Van Gogh Museum is a Dutch art museum dedicated to the works of Vincent van Gogh and his contemporaries in the Museum Square in Amsterdam South, close to the Stedelijk Museum, the Rijksmuseum, and the Concertgebouw.	\N
 3	Jordaan Neighborhood	Jordaan is the most popular of Amsterdam's neighborhoods and is well-known for its mix of residential areas with garden courtyards, lively markets, and upscale boutiques and eateries. The area is also home to plenty of fun things to do, from taking a pleasant stroll along the many picturesque streets to spending time visiting the many top-rated tourist attractions located here.\n\nAlthough best known as the location of Anne Frank House, the area is also home to lesser-known treasures like the Woonboots Museum, a floating museum dedicated to houseboats, and the interesting (honestly!) Amsterdam Cheese Museum.	\N
@@ -113,14 +113,14 @@ COPY places.place_table (id, name, description, thumbnail_url) FROM stdin;
 -- Name: place_table_id_seq; Type: SEQUENCE SET; Schema: places; Owner: postgres
 --
 
-SELECT pg_catalog.setval('places.place_table_id_seq', 9, true);
+SELECT pg_catalog.setval('place_table_id_seq', 9, true);
 
 
 --
 -- Name: place_table place_table_pk; Type: CONSTRAINT; Schema: places; Owner: postgres
 --
 
-ALTER TABLE ONLY places.place_table
+ALTER TABLE ONLY place_table
     ADD CONSTRAINT place_table_pk PRIMARY KEY (id);
 
 

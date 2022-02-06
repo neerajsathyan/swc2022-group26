@@ -1,5 +1,5 @@
 from __future__ import absolute_import
-from apis.model import ModelHandler
+from apis.model import ModelHandler,  CrudHandler
 from web import *
 
 
@@ -17,6 +17,7 @@ def init_route(app, api):
     """
     # api key resource routing
     api.add_resource(ModelHandler, '/api')
+    api.add_resource(CrudHandler, '/api/v1/places')
 
     # Web routes registration
     app.register_blueprint(web_routes)

@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   swc-api:
-    image: neerajs1995/swc-api:0.1
+    image: neerajs1995/swc-api:0.2
     build: .
     ports:
       - "8000:8000"

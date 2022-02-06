@@ -17,10 +17,19 @@ spec:
     spec:
       containers:
       - name: swc-api-container
-        image: neerajs1995/swc-api:0.1
+        image: neerajs1995/swc-api:0.2
         resources:
           limits:
             memory: "128Mi"
             cpu: "250m"
         ports:
         - containerPort: 8000
+        envFrom:
+          - configMapRef:
+              name: swc-db-configmap
+        env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: swc-db-secret
+                key: password

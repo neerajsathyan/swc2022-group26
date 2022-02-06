@@ -10,4 +10,6 @@ data:
   POSTGRES_PORT: "5432"
   POSTGRES_USER: postgres
   POSTGRES_DB: tourism
+  FLASK_ENV: development
+  FLASK_APP: swc.py
 
