@@ -6,23 +6,17 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      role: api
+      app: swc-api
   policyTypes:
   - Ingress
-   - Egress
+  - Egress
   ingress:
   - from:
     - namespaceSelector:
         matchLabels:
-          project: swc-app
-    - podSelector:
-        matchLabels:
-          role: db
+          name: swc-app
   egress:
   - to:
-    - namespaceSelector:
-        matchLabels:
-          project: swc-app
-    - podSelector:
-        matchLabels:
-          role: frontend
+      - namespaceSelector:
+          matchLabels:
+            name: swc-app

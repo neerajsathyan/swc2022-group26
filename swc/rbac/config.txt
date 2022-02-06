@@ -1,0 +1,4 @@
+kubectl config get-contexts
+kubectl config set-context swcpodreader --user=swc-user --cluster=microk8s-cluster
+kubectl config use-context udefpodreader
+k get pods --as swc-user

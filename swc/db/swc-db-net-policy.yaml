@@ -6,14 +6,29 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      role: db
+      app: swc-db
   policyTypes:
+  - Ingress
   - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: swc-app
+    - podSelector:
+        matchLabels:
+          app: swc-api
+    ports:
+      - port: 5432
+        protocol: TCP
   egress:
   - to:
     - namespaceSelector:
         matchLabels:
-          project: swc-app
+          name: swc-app
     - podSelector:
         matchLabels:
-          role: api
+          app: swc-db
+    ports:
+      - port: 5432
+        protocol: TCP
