@@ -8,5 +8,5 @@ spec:
   selector:
     app: swc-frontend
   ports:
-  - port: 8000
-    targetPort: 8080
+  - port: 8080
+    targetPort: 8000

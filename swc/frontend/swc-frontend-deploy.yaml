@@ -24,3 +24,6 @@ spec:
             cpu: "250m"
         ports:
         - containerPort: 8080
+        env:
+          - name: API_HOST
+            value: swc-api-service 

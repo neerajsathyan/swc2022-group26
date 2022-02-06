@@ -20,12 +20,13 @@ export default {
   name: 'App',
   data() {
     return {
-      places: []
+      places: [],
+      api_url: process.env.API_HOST
     }
   },
   methods: {
     async fetchPlaces() {
-      await axios.get('http://localhost:8000/api').then((response) => {
+      await axios.get(this.api_url).then((response) => {
         if (response.data) {
           this.places = response.data.places
         }
