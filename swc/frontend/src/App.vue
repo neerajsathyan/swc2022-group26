@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     async fetchPlaces() {
-      await axios.get(this.api_url).then((response) => {
+      await axios.get("https://api.swc26.com/api").then((response) => {
         if (response.data) {
           this.places = response.data.places
         }

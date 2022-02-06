@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: swc-app-ingress
+  namespace: swc-app
+  annotations:
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+spec:
+  tls:
+  - hosts:
+    - api.swc26.com
+    - swc26.com
+    secretName: swc-secret-tls
+  rules:
+  - host: api.swc26.com
+    http:
+      paths:
+      - pathType: ImplementationSpecific
+        backend:
+          service:
+            name: swc-api-service
+            port:
+              number: 8080
+  - host: swc26.com
+    http:
+      paths:
+        - pathType: ImplementationSpecific
+          backend:
+            service:
+              name: swc-frontend-service
+              port:
+                number: 8080

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: swc-db-deployment
+  namespace: swc-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: swc-db
+  template:
+    metadata:
+      labels:
+        app: swc-db
+    spec:
+      containers:
+        - name: swc-db-container
+          image: postgres:14.1-alpine
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: swc-db-configmap
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: swc-db-secret
+                  key: password
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: swc-db-postgres-volume
+      volumes:
+        - name: swc-db-postgres-volume
+          persistentVolumeClaim:
+            claimName: swc-db-pv-claim

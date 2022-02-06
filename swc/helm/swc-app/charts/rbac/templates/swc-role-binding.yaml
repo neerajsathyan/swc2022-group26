@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: swc-app
+  name: swc-pod-reader-binding
+subjects:
+  - kind: ServiceAccount
+    name: swc-pod-reader-sa
+    namespace: swc-app
+roleRef:
+  kind: Role
+  name: swc-pod-reader
+  apiGroup: rbac.authorization.k8s.io

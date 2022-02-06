@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: swc-api-deployment
+  namespace: swc-app
+  labels:
+    app: swc-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: swc-api
+  template:
+    metadata:
+      labels:
+        app: swc-api
+    spec:
+      containers:
+      - name: swc-api-container
+        image: neerajs1995/swc-api:0.2
+        ports:
+        - containerPort: 8000
+        envFrom:
+          - configMapRef:
+              name: swc-db-configmap
+        env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: swc-db-secret
+                key: password
