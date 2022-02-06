@@ -1,0 +1,38 @@
+helm repo add stable https://charts.helm.sh/stable
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm install my-keycloak-release bitnami/keycloak
+helm list
+helm create [chart-name]
+To see what this template will generate, you can run this command from the parent directory of the chart:
+helm install --dry-run --debug ./my-first-chart --generate-name
+If a user wanted to change the default configuration, they could override it on the command-line.
+For example, if the template contains the line: type: {{ .Values.service.type }}
+the user can override the value by referring to service.type in the command line below:
+helm install --dry-run --debug ./mychart --set service.type=NodePort –
+generate-name
+
+helm install -f myvals.yaml ./mychart
+helm upgrade –f myvals.yaml ./mychart
+
+helm install --set foo=bar ./mychart
+
+If you need to delete a key from the default values, you may override the value of the key to be null, in
+which case Helm will remove the key from the overridden values merge. Example:
+--set livenessProbe.httpGet=null
+
+Before upgrading a Helm release, let’s package our first version of the Helm chart with:
+helm package [CHART_DIRECTORY
+
+Now edit the Chart.yaml and increase the version from 0.1.0 to 0.1.1 and appVersion from 1.1.4.2 to latest
+
+appVersion is used in templates/deployment.yaml as the version of the image to pull from the registry:
+
+If you now repeat the package command it creates my-first-chart.0.1.1.tgz that refers to the nginx:latest image.
+
+You can install the packaged Helm chart by supplying the name of the .tgz file instead of the directory name.
+You can then upgrade the release to the second package with:
+helm upgrade [RELEASE-NAME] [CHART-PACKAGE-TGZ]
+Note that RELEASE-NAME must be the same name you used in the first installation.
+Helm will increment the Revision number as you can see with helm ls.
+
+helm rollback [RELEASE-NAME] [REVISION]
